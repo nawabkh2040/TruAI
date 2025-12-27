@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <section className="w-full bg-[#0B0E1A] py-10 pb-24 px-6 flex justify-center">
+    <section id="about" className="w-full bg-[#0B0E1A] py-10 pt-60 pb-24 px-6 flex justify-center">
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}

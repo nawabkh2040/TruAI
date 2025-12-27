@@ -40,8 +40,9 @@ const FeatureCard = ({ index, title, desc, img }) => {
       ref={ref}
       style={{ scale, opacity, filter: blur }}
       className="sticky top-24 mb-40"
+      id='feature'
     >
-      <div className="bg-[#e9eae3] rounded-3xl p-10 flex gap-16 items-center">
+      <div  className="bg-[#e9eae3] rounded-3xl p-10 flex gap-16 items-center">
         
         <div className="w-1/2">
           <img

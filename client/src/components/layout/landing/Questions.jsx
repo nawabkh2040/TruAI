@@ -29,7 +29,7 @@ const Questions = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="bg-[#ECEDE7] py-28">
+    <section id="question" className="bg-[#ECEDE7] py-28 pt-40">
       <div className="max-w-5xl mx-auto px-6">
         <h2 className="text-4xl font-semibold text-gray-900 mb-4">
           Have questions? We have answers

@@ -6,17 +6,17 @@ import TextType from "../../TextType";
 
 const Hero = () => {
   return (
-    <div className="w-full min-h-[90vh] bg-[#0B0E1A] flex items-center">
-      <div className="max-w-7xl mx-auto w-full flex items-center justify-between px-10">
+    <div id="home" className="w-full min-h-[90vh] bg-[#0B0E1A] flex items-center">
+      <div className="max-w-7xl mx-auto w-full flex items-center justify-between px-10 pt-60">
 
-        {/* LEFT IMAGES */}
+        
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="flex items-center gap-6"
         >
-          <div className="w-32 h-80 overflow-hidden rounded-xl opacity-80">
+          <div className="w-32 h-90 overflow-hidden rounded-xl opacity-80">
             <img
               src={image1}
               alt="img1"
@@ -24,7 +24,7 @@ const Hero = () => {
             />
           </div>
 
-          <div className="w-56 h-[360px] overflow-hidden rounded-2xl shadow-xl">
+          <div className="w-56 h-110 overflow-hidden rounded-2xl shadow-xl">
             <img
               src={image2}
               alt="img2"
@@ -32,7 +32,7 @@ const Hero = () => {
             />
           </div>
 
-          <div className="w-32 h-80 overflow-hidden rounded-xl opacity-80">
+          <div className="w-32 h-90 overflow-hidden rounded-xl opacity-80">
             <img
               src={image3}
               alt="img3"
@@ -41,7 +41,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* RIGHT TEXT */}
+        
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
@@ -53,10 +53,10 @@ const Hero = () => {
             typingSpeed={75}
             pauseDuration={1500}
             showCursor
-            className="text-white font-bold text-4xl leading-tight"
+            className="text-white font-bold text-5xl leading-tight"
           />
 
-          <p className="text-gray-400 mt-6 text-lg">
+          <p className="text-gray-400 mt-6 text-xl">
             Instantly reveal the authenticity of any image or video.
             No more uncertainty — just clear, reliable results.
           </p>

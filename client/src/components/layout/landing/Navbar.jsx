@@ -2,9 +2,19 @@ import React, { useEffect, useState } from "react";
 import logo from "../../../assets/logo.png";
 import { Button } from "../../ui/button";
 import BlurText from "../../BlurText";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+
+  const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +37,7 @@ const Navbar = () => {
             src={logo}
             alt="TruAI Logo"
             className="h-14 w-auto border"
+            onClick={()=>navigate("/")}
           />
           <span className="text-white font-semibold text-2xl mt-6">
             <BlurText
@@ -41,9 +52,14 @@ const Navbar = () => {
 
         
         <div className="flex-1 flex justify-center gap-10 text-gray-300 font-medium">
-          {["Home", "About", "Features", "Questions", "Contact"].map((item) => (
+          {[{ label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Features", id: "feature" },
+  {label:"Questions", id:"question"},
+  { label: "Contact", id: "contact" },
+].map((item) => (
             <p
-              key={item}
+              key={item.id}
               className="
                 relative cursor-pointer
                 transition-all duration-300
@@ -61,15 +77,16 @@ const Navbar = () => {
                 after:duration-300
                 hover:after:w-full
               "
+              onClick={() => scrollToSection(item.id)}
             >
-              {item}
+              {item.label}
             </p>
           ))}
         </div>
 
        
         <div>
-          <Button className="bg-yellow-300 text-gray-700 rounded-full px-5 py-6 hover:bg-yellow-400 font-normal transition">
+          <Button className="bg-yellow-300 text-gray-700 rounded-full px-5 py-6 hover:bg-yellow-400 font-normal transition" onClick={() => navigate("/upload")}>
             Get Started
           </Button>
         </div>

@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '../components/layout/landing/Navbar'
 import Hero from '../components/layout/landing/Hero'
-
 import Contact from '../components/layout/landing/Contact'
 import Questions from '../components/layout/landing/Questions'
 import HowItWorks from '../components/layout/landing/HowItWork'

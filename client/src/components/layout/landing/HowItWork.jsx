@@ -8,6 +8,7 @@ import {
   Sparkles
 } from "lucide-react";
 import image4 from "../../../assets/4.avif";
+import { useNavigate } from "react-router-dom";
 
 const features = [
   {
@@ -43,6 +44,8 @@ const features = [
 ];
 
 const HowItWork = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="bg-[#ECEDE7] pt-1">
       
@@ -99,7 +102,7 @@ const HowItWork = () => {
             </p>
 
             <div className="flex gap-4">
-              <button className="bg-lime-300 px-7 py-3 rounded-full font-medium hover:bg-lime-400 transition">
+              <button onClick={() => navigate("/upload")} className="bg-lime-300 px-7 py-3 rounded-full font-medium hover:bg-lime-400 transition">
                 Try now
               </button>
              

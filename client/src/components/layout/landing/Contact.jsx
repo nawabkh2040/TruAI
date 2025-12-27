@@ -3,7 +3,7 @@ import { Mail, Phone, Twitter, Instagram } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section className="bg-[#F4F5EF] py-28">
+    <section id="contact" className="bg-[#F4F5EF] py-28">
       <motion.div
         className="max-w-7xl mx-auto px-6"
         initial={{ opacity: 0, y: 40 }}
