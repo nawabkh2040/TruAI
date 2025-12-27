@@ -48,7 +48,7 @@ const Upload = () => {
             Upload Media
           </h2>
 
-          {/* TYPE SELECT */}
+        
           <div className="flex gap-4 mb-6 justify-center">
             {["image", "video"].map((t) => (
               <button
@@ -65,7 +65,7 @@ const Upload = () => {
             ))}
           </div>
 
-          {/* DROP ZONE */}
+         
           <div
             onDragOver={(e) => {
               e.preventDefault();
@@ -97,7 +97,7 @@ const Upload = () => {
             </label>
           </div>
 
-          {/* PREVIEW */}
+          
           {file && (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -121,7 +121,7 @@ const Upload = () => {
             </motion.div>
           )}
 
-          {/* ACTION BUTTON */}
+         
           <button
             onClick={handleAnalyze}
             className="mt-8 w-full py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition font-semibold"
