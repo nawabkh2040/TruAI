@@ -1,9 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CountUp from "react-countup";
 import PageWrapper from "../components/PageWrapper";
 
 const Result = () => {
   const { state } = useLocation();
+  const navigate = useNavigate();
+  
 
   if (!state || !state.result) {
     return (
@@ -13,8 +15,19 @@ const Result = () => {
     );
   }
 
-  const { is_ai, score } = state.result;
-  const percentage = Math.round(score * 100);
+  const result = state.result;
+  console.log("Result data:", result);
+
+ 
+  const isVideo = result.type === "video";
+
+  const isAI = isVideo
+    ? result.summary?.decision
+    : result.is_ai;
+
+  const confidence = isVideo
+    ? Math.round(result.summary?.avg_score * 100)
+    : Math.round(result.score * 100);
 
   return (
     <PageWrapper>
@@ -31,22 +44,30 @@ const Result = () => {
 
           <div
             className={`text-6xl font-bold mb-4 ${
-              is_ai ? "text-red-500" : "text-green-400"
+              isAI ? "text-red-500" : "text-green-400"
             }`}
           >
-            {is_ai ? "AI Generated" : "Authentic"}
+            {isAI ? "AI Generated" : "Authentic"}
           </div>
 
           <div className="text-gray-300 text-lg mb-2">
-            Confidence Level
+            AI involvement level:
           </div>
 
           <div className="text-5xl font-bold text-indigo-400">
-            <CountUp end={percentage} duration={2} />%
+            <CountUp end={confidence} duration={2} />%
           </div>
 
+          
+          {isVideo && (
+            <div className="mt-6 text-sm text-gray-400">
+              <p>Frames Analyzed: {result.frames?.length}</p>
+              <p>Max AI Score: {(result.summary?.max_score * 100).toFixed(1)}%</p>
+            </div>
+          )}
+
           <button
-            onClick={() => window.location.href = "/upload"}
+            onClick={() => navigate("/upload", { replace: true })}
             className="mt-8 px-6 py-3 bg-indigo-600 rounded-lg hover:bg-indigo-700"
           >
             Try Another File

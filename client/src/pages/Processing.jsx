@@ -3,18 +3,37 @@ import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import LetterGlitch from "../components/LetterGlitch";
 import { motion } from "framer-motion";
-
+import { checkImage, checkVideo } from "../api/detection";
 const Processing = () => {
+  
   const navigate = useNavigate();
   const { state } = useLocation();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/result", { state });
-    }, 2500);
+    if (!state || !state.file || !state.type) {
+      navigate("/upload", { replace: true });
+      return;
+    }
 
-    return () => clearTimeout(timer);
-  }, []);
+    const runDetection = async()=>{
+    try {
+      let result;
+      if(state.type==="image"){
+        result = await checkImage(state.file);
+      } else if(state.type==="video"){
+        result = await checkVideo(state.file);
+      }
+
+      navigate("/result", {state: {result, type: state.type}});
+    } catch (error) {
+      console.error("Detection error:", error);
+    }
+  }
+
+  runDetection();
+  }, [navigate, state]);
+
+  
 
   return (
     <PageWrapper>

@@ -23,22 +23,9 @@ const Upload = () => {
   };
 
   const handleAnalyze = () => {
+    if (!file) return alert("Please upload a file first.");
 
-
-
-    if (!file) return alert("Please upload a file first");
-
-    if (type === "image") {
-      checkImage(file).then((result) => {
-        navigate("/processing", { state: { file, type, result } });
-        console.log(result);
-      });
-    } else if (type === "video") {
-      checkVideo(file).then((result) => {
-        navigate("/processing", { state: { file, type, result } });
-        console.log(result);
-      });
-    }
+    navigate("/processing",{state:{file, type},replace:true});
   };
 
   return (

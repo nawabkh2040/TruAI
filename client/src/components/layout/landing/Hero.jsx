@@ -3,9 +3,12 @@ import image1 from "../../../assets/1.avif";
 import image2 from "../../../assets/2.avif";
 import image3 from "../../../assets/3.avif";
 import TextType from "../../TextType";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
+    
     <div id="home" className="w-full min-h-[90vh] bg-[#0B0E1A] flex items-center">
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between px-10 pt-60">
 
@@ -62,7 +65,7 @@ const Hero = () => {
           </p>
 
           <div className="flex gap-5 mt-8">
-            <button className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 transition rounded-lg text-white">
+            <button onClick={()=>navigate("/upload")}  className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 transition rounded-lg text-white">
               Get Started
             </button>
 
